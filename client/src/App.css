@@ -1,0 +1,71 @@
+
+
+
+
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+.main-table{
+  width: 112%;
+  background: rgb(255, 255, 255);
+  padding: 4rem;
+  right: 13.5rem;
+  position: relative;
+
+}
+
+.navbar{
+  background-color: #fff;
+  width: 112%;
+  right: 13.5rem;
+}
+@media only screen and (max-width:992px) {
+  .main-table{
+    width: 94%;
+    background: rgb(255, 255, 255);
+    padding: 4rem;
+    right: -5.5rem;
+    position: relative;
+  
+  }
+  .navbar{
+    background-color: #fff;
+    width: 94%;
+    right:-5.5rem;
+}
+  
+
+.menu-item{
+  height: 57px;
+  width: 16px;
+  display: flex;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase ;
+  margin: auto 20px;
+  border-radius: 10px;
+  position: relative;
+  font-size: 8px;
+}
+
+.menu-item p{
+  position: relative;
+  top: 1.7rem;
+  padding-left: 1rem;
+  font-weight: 500;
+}
+.menu-item img{
+  width: 12px;
+ 
+}
+}
+
+
+
+/*Update Button in tables */
+.updateBtn{
+  margin-right:50px;
+}

@@ -1,0 +1,24 @@
+.page-title{
+    color:#316cf4;
+}
+.page-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.add-btn{
+    
+        height: 40px;
+        width: 140px;
+        margin-top: 7rem;
+    
+}
+.courses-content{
+    width: 112%;
+    background: rgb(255, 255, 255);
+    padding: 2rem;
+    position: relative;
+    right: 13.5rem;
+}
+
+
