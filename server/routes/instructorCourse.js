@@ -87,8 +87,6 @@ router.get('/instructor_courses/:userId',instructor, (req, res, next) => {
   });
 });
 
-
-
 //set grades 
 router.put("/:id",instructor,async(req,res) =>{
     try {
@@ -121,11 +119,5 @@ router.put("/:id",instructor,async(req,res) =>{
         }
       }
 );
-
-
-
-
-
-
 
 module.exports = router;

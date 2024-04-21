@@ -109,5 +109,4 @@ router.get("",admin,async (req, res) => {
 res.status(200).json(instructors);
 });
 
-
 module.exports = router;

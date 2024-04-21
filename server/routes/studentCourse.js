@@ -48,7 +48,6 @@ router.get('/:userId', function(req, res) {
   });
 });
 
-
 //Register courses
 function registerCourse(userId, courseId, callback) {
   // Check if the user and course exist

@@ -105,8 +105,4 @@ router.get("",async (req, res) => {
 res.status(200).json(courses);
 });
 
-
-
-
-
 module.exports = router;
