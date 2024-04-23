@@ -5,6 +5,7 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const util = require("util"); // helper
+const jwt = require('jsonwebtoken');
 
 // Admin [Create, Update, Delete, List]
 
@@ -14,32 +15,35 @@ async(req, res) => {
     // 1- VALIDATION REQUEST [manual, express validation]
     try{
         const errors = validationResult(req);
-     if (!errors.isEmpty()) {
-       return res.status(400).json({ errors: errors.array() });
-     }
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
      
-     //2-PREPARE INSTRUCTOR OBJECT
-     const instructor ={
+      //2-PREPARE INSTRUCTOR OBJECT
+      let payload = {
+        name: req.body.name,
+        email: req.body.email,
+        role: "instructor",
+      }
+      const instructor ={
         name: req.body.name,
         email: req.body.email,
         password: await bcrypt.hash(req.body.password, 10),
         phone: req.body.phone,
-        status: req.body.status,
-        role: req.body.role,
-        token: crypto.randomBytes(16).toString("hex"), // JSON WEB TOKEN, CRYPTO -> RANDOM ENCRYPTION STANDARD
-       }
-       
+        token: jwt.sign(payload, "secretKey"), // JSON WEB TOKEN, CRYPTO -> RANDOM ENCRYPTION STANDARD
+        role: 2
+      }
       
-       //3-INSERT INSTRUCTOR INTO DB
-  const query = util.promisify(connection.query).bind(connection); 
-  await query("insert into users set ?", instructor);
-    res.status(200).json({
-        msg: "instructor created successfully ^^",
-    });
+      //3-INSERT INSTRUCTOR INTO DB
+      const query = util.promisify(connection.query).bind(connection); 
+      await query("insert into users set ?", instructor);
+      res.status(200).json({
+          msg: "instructor created successfully ^^",
+      });
     }
     catch (err) {
         res.status(500).json(err);
-      }
+    }
 });
 
 //update instructor
@@ -64,7 +68,6 @@ router.put("/:id",admin,async(req,res) =>{
           email: req.body.email,
           password: await bcrypt.hash(req.body.password, 10),
           phone: req.body.phone,
-          status: req.body.status,
         };
   
       
@@ -105,7 +108,9 @@ async(req, res) => {
 //list instructor
 router.get("",admin,async (req, res) => {
   const query = util.promisify(connection.query).bind(connection);
-  const instructors = await query("select * from users where role = 2 ");
+
+  const instructors = await query("select * from `users` where `role` = 2 ");
+
 res.status(200).json(instructors);
 });
 

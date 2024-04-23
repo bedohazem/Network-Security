@@ -53,7 +53,7 @@ function Courses() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         "token": token
-      },body: JSON.stringify({name:courseName.current.value , code:code.current.value  , status:1 })
+      },body: JSON.stringify({name:courseName.current.value , code:code.current.value})
     },
     ).then(function (response) {
       return response.json();
@@ -77,7 +77,7 @@ function Courses() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         "token": token
-      },body: JSON.stringify({courseId:course_id.current.value , userId:instrucotr_id.current.value  , status:1 })
+      },body: JSON.stringify({courseId:course_id.current.value , userId:instrucotr_id.current.value})
     },
     ).then(function (response) {
       // return response.json();
@@ -97,7 +97,7 @@ function Courses() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         "token": token
-      },body: JSON.stringify({name:courseName.current.value , code:code.current.value  , status:1 })
+      },body: JSON.stringify({name:courseName.current.value , code:code.current.value })
     },
     ).then(function (response) {
       return response.json();
@@ -177,7 +177,6 @@ function Courses() {
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Code</th>
-            <th scope="col">Status</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -189,7 +188,6 @@ function Courses() {
                 <th scope="row">{index}</th>
                 <td>{dataObj.name}</td>
                 <td>{dataObj.code}</td>
-                <td>{dataObj.status == 1 ? 'active' : 'disactive'}</td>
                 <td>
                   {" "}
                   <Button

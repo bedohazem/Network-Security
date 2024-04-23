@@ -16,9 +16,6 @@ const manageinstructor = require("./routes/Manage_instructor");
 const assigninstructors = require("./routes/Assign_instructor");
 
 
-
-
-
 // ====================  RUN THE APP  ====================
 app.listen(4000, "localhost", () => {
   console.log("SERVER IS RUNNING ");
@@ -31,6 +28,3 @@ app.use("/studentCourse", studentCourse);
 app.use("/adminCourse", adminCourse);
 app.use("/manageinstructor", manageinstructor);
 app.use("/assigninstructors", assigninstructors);
-
-
-

@@ -4,6 +4,7 @@ const { body, validationResult } = require("express-validator");
 const util = require("util"); // helper
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const jwt = require('jsonwebtoken');
 
 //Register
 router.post(
@@ -45,12 +46,18 @@ router.post(
         }
   
         // 3- PREPARE OBJECT USER TO -> SAVE
+        let payload = {
+          name: req.body.name,
+          email: req.body.email,
+          role: "student",
+        }
         const userData = {
           name: req.body.name,
           email: req.body.email,
           password: await bcrypt.hash(req.body.password, 10),
           phone: req.body.phone,
-          token: crypto.randomBytes(16).toString("hex"), // JSON WEB TOKEN, CRYPTO -> RANDOM ENCRYPTION STANDARD
+          token: jwt.sign(payload, "secretKey"), // JSON WEB TOKEN, CRYPTO -> RANDOM ENCRYPTION STANDARD
+          role: 3
         };
   
         // 4- INSERT USER OBJECT INTO DB

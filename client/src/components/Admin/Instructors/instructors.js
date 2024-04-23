@@ -40,7 +40,7 @@ function Instructors() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         "token": token
-      },body: JSON.stringify({name:instructor_name.current.value , phone:phone.current.value  , email:email.current.value ,password:password.current.value ,status:1 ,role:2 })
+      },body: JSON.stringify({name:instructor_name.current.value , phone:phone.current.value  , email:email.current.value ,password:password.current.value ,role:2 })
     },
     ).then(function (response) {
       return response.json();
@@ -135,7 +135,6 @@ function Instructors() {
             <th scope="col">name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
-            <th scope="col">status</th>
             <th scope="col">Actions</th>
 
           </tr>
@@ -148,7 +147,6 @@ function Instructors() {
                 <td>{dataObj.name}</td>
                 <td>{dataObj.email}</td>
                 <td>{dataObj.phone}</td>
-                <td>{dataObj.status == 1 ? 'active' : 'disactive'}</td>
                 <td>  
             <Button class="btn btn-primary ms-2" data-bs-target="#updateModal" onClick={()=>handleShowModalTwo(dataObj)}>
               Update

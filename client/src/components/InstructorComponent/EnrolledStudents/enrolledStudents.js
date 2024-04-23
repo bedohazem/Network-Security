@@ -27,17 +27,6 @@ function EnrolledStudents() {
       .then((d) => setData(d))
   }
 
-  // const fetchCourses = () => {
-  //   return fetch("http://localhost:4000/adminCourse", {
-  //     method: "GET", headers: {
-  //       "token": token, 'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //     .then((res) => res.json())
-  //     .then((d) => setCourses(d))
-  // }
-
   useEffect(() => {
     fetchInfo();
     // fetchCourses();
@@ -90,7 +79,6 @@ function EnrolledStudents() {
           <tr>
             <th scope="col">#</th>
             <th scope="col">course</th>
-            <th scope="col">status</th>
             <td>Actions</td>
           </tr>
         </thead>
@@ -101,7 +89,6 @@ function EnrolledStudents() {
               <tr>
               <th scope="row">{index}</th>
               <td>{dataObj.name}</td>
-              <td>{dataObj.status == 1 ? 'active' : 'disactive'}</td>
               <td> 
             <Button class="btn btn-primary ms-2 "  onClick={()=>handleShowModalThree(dataObj.id)}>
               View students

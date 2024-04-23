@@ -13,8 +13,6 @@ router.post("", admin,body("name").isString().withMessage("please enter a valid 
 body("code").isString().withMessage("please enter a valid code")
 .isLength({min:4}).withMessage("code should be at least 4 characters"),
 
-body("status").isInt().withMessage("please enter status of course")
-.isLength({min:1}).withMessage("status active/in-active"),
 async(req, res) => {
     // 1- VALIDATION REQUEST [manual, express validation]
     try{
@@ -26,7 +24,6 @@ async(req, res) => {
      const course ={
         name: req.body.name,
         code: req.body.code,
-        status: req.body.status
        }
        //3-INSERT COURSE INTO DB
   const query = util.promisify(connection.query).bind(connection); 
@@ -60,7 +57,6 @@ router.put("/:id",admin,async(req,res) =>{
         const courseObj = {
           name: req.body.name,
           code: req.body.code,
-          status: req.body.status
         };
   
       

@@ -90,7 +90,6 @@ function RegisteredCources() {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Status</th>
             <th scope="col">Grade</th>
           </tr>
         </thead>
@@ -102,7 +101,6 @@ function RegisteredCources() {
               <tr>
               <th scope="row">{index}</th>
               <td>{dataObj.name}</td>
-              <td>{dataObj.status == 1 ? 'active' : 'disactive'}</td>
               <td>{dataObj.grade}</td>
             </tr>
 
