@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const https = require("https");
 const fs = require("fs");
-const loger=require("morgan");
-app.use(loger("dev"))
+// const loger=require("morgan");
+// app.use(loger("dev"))
 
 // ====================  GLOBAL MIDDLEWARE ====================
 app.use(express.json());
