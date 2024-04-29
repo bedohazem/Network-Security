@@ -5,6 +5,7 @@ const util = require("util"); // helper
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const jwt = require('jsonwebtoken');
+const { userInfo } = require("os");
 
 //Register
 router.post(
@@ -83,6 +84,7 @@ router.post(
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
+        
       }
 
       // 2- CHECK IF EMAIL EXISTS
@@ -101,6 +103,7 @@ router.post(
       }
 
       // 3- COMPARE HASHED PASSWORD
+      req.session.user=userInfo;
       const checkPassword = await bcrypt.compare(
         req.body.password,
         user[0].password

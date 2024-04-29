@@ -4,12 +4,28 @@ const https = require("https");
 const fs = require("fs");
 // const loger=require("morgan");
 // app.use(loger("dev"))
-
+const session = require ('express-session');
+app.use(session({ secret: 'somevalue' }));
 // ====================  GLOBAL MIDDLEWARE ====================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // TO ACCESS URL FORM ENCODED
 const cors = require("cors");
 app.use(cors()); // ALLOW HTTP REQUESTS LOCAL HOSTS
+
+app.use(session({
+   secret: process.env.SESSION_SECRET,
+   saveUninitialized :true ,
+   resave: false,
+   cookie:{
+     httpOnly: true,
+    maxAge:parseInt(process.env.SESSION_MAX_AGE)
+  }
+}));
+
+app.use((req,res, next)=>{
+  console.log(req.session);
+  next();
+})
 
 // ====================  Required Module ====================
 const auth = require("./routes/Auth");
